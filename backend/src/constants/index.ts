@@ -1,9 +1,9 @@
 import { config } from "dotenv";
 config();
 
-export const WEBSITE_ORIGIN = process.env.WEBSITE_ORIGIN;
-export const BACKEND_ORIGIN = process.env.BACKEND_ORIGIN;
-export const PORT = process.env.PORT;
+export const WEBSITE_ORIGIN = process.env.WEBSITE_ORIGIN || "";
+export const BACKEND_ORIGIN = process.env.BACKEND_ORIGIN || "";
+export const PORT = process.env.PORT || "";
 
 /** the value in the env should be 'development' or 'production' */
 export const NODE_ENV = process.env.NODE_ENV;
