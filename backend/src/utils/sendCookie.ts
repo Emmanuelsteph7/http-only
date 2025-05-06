@@ -17,6 +17,16 @@ export const sendCookie = (
     ? "localhost"
     : removeProtocol(BACKEND_ORIGIN);
 
+  /**
+     * secure: true
+        → The cookie will only be sent over HTTPS.
+        → Required if you use SameSite: 'None'.
+
+      SameSite has three valid options:
+        Strict: Only send the cookie for same-site requests. This won't work since the frontend and backend are on different domains(sites).
+        Lax: Allow cookie on top-level navigations and GET requests. This won't work because we will have other methids like POST, PUT etc.
+        None: Allow the cookie on all cross-site requests — but only if secure: true. This will work for production in our instance.
+     */
   res.cookie(TOKEN_COOKIE_KEY, token, {
     maxAge,
     httpOnly: true,
