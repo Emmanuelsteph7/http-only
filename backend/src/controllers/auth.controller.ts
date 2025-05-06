@@ -8,11 +8,9 @@ import { DURATION_5_MIN } from "../constants";
 export const loginController = catchAsyncErrors(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
-      console.log("setting cookie");
-
       sendCookie(res, "token-string", DURATION_5_MIN);
       sendResponse({
-        message: "Server successfully running",
+        message: "Login successful",
         res,
         status: 200,
       });
@@ -25,9 +23,10 @@ export const loginController = catchAsyncErrors(
 export const logoutController = catchAsyncErrors(
   async (req: Request, res: Response, next: NextFunction) => {
     try {
+      /** Passing 0 as max will make the max age to be like date.now and it will clear it */
       sendCookie(res, "token-string", 0);
       sendResponse({
-        message: "Server successfully running",
+        message: "Logout successful",
         res,
         status: 200,
       });

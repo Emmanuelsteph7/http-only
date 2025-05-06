@@ -17,27 +17,12 @@ export const sendCookie = (
     ? "localhost"
     : removeProtocol(BACKEND_ORIGIN);
 
-  console.log({ isDevelopment, formattedDomain, NODE_ENV });
-  console.log({
-    maxAge,
-    httpOnly: true,
-    sameSite: "lax",
-    secure: !isDevelopment,
-    domain: formattedDomain,
-    path: "/",
-    token,
-    TOKEN_COOKIE_KEY,
-  });
-
-  console.log("sending cookie");
-
   res.cookie(TOKEN_COOKIE_KEY, token, {
     maxAge,
     httpOnly: true,
-    sameSite: "lax",
+    sameSite: isDevelopment ? "lax" : "none",
     secure: !isDevelopment,
     domain: formattedDomain,
     path: "/",
   });
-  console.log("cookie sent");
 };
